@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workout Tracker</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+    .tabs button { margin-right: 10px; }
+    .exercise { background: #fff; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
+    h3 { margin-top: 0; }
+    .sets { margin-bottom: 10px; }
+    .weight-input, .rep-input { width: 60px; margin-left: 8px; }
+    .timer { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Workout Tracker</h1>
+  <div class="tabs">
+    <button onclick="showTab('PUSH')">PUSH</button>
+    <button onclick="showTab('PULL')">PULL</button>
+    <button onclick="showTab('LEG')">LEG</button>
+  </div>
+<div class='tab-content' id='PUSH' style='display:none;'>
+
+    <div class="exercise">
+      <h3>Flat Dumbbell Press (3 sets of 8-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Flat_Dumbbell_Press_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Flat_Dumbbell_Press_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Flat_Dumbbell_Press_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Flat_Dumbbell_Press_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 180)">Start 3 min Timer</button>
+        <span class="countdown">180</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=VmB1G1K7v94" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>30-Degree Incline Smith Press (4 sets of 8-10)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="30-Degree_Incline_Smith_Press_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="30-Degree_Incline_Smith_Press_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="30-Degree_Incline_Smith_Press_set3_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 4
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="30-Degree_Incline_Smith_Press_set4_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="30-Degree_Incline_Smith_Press_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 180)">Start 3 min Timer</button>
+        <span class="countdown">180</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=pWgkZz6RZ5I" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Chest Supported Dumbbell Lateral Raise (4 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Chest_Supported_Dumbbell_Lateral_Raise_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Chest_Supported_Dumbbell_Lateral_Raise_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Chest_Supported_Dumbbell_Lateral_Raise_set3_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 4
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Chest_Supported_Dumbbell_Lateral_Raise_set4_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Chest_Supported_Dumbbell_Lateral_Raise_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=gDbZBiD8BHU" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>SA Cross Body Triceps Extension (3 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="SA_Cross_Body_Triceps_Extension_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="SA_Cross_Body_Triceps_Extension_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="SA_Cross_Body_Triceps_Extension_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="SA_Cross_Body_Triceps_Extension_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=t6uG9FMCGAA" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Dual-Rope Triceps Extension (3 sets of 8-10)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dual-Rope_Triceps_Extension_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dual-Rope_Triceps_Extension_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dual-Rope_Triceps_Extension_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Dual-Rope_Triceps_Extension_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=vB5OHsJ3EME" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Dead Bug (2 sets of 15-20)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dead_Bug_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dead_Bug_set2_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Dead_Bug_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=4dIz6Ml0hmo" target="_blank">How to do it</a>
+      </div>
+    </div>
+</div>
+<div class='tab-content' id='PULL' style='display:none;'>
+
+    <div class="exercise">
+      <h3>Neutral Grip Cable Lat Pulldown (3 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Neutral_Grip_Cable_Lat_Pulldown_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Neutral_Grip_Cable_Lat_Pulldown_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Neutral_Grip_Cable_Lat_Pulldown_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Neutral_Grip_Cable_Lat_Pulldown_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=lueEJGjTuPQ" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Upper Back Row Machine (4 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Upper_Back_Row_Machine_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Upper_Back_Row_Machine_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Upper_Back_Row_Machine_set3_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 4
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Upper_Back_Row_Machine_set4_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Upper_Back_Row_Machine_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=IQwS0cVYp3I" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Single Arm Iso Lumbar Row Machine (4 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Single_Arm_Iso_Lumbar_Row_Machine_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Single_Arm_Iso_Lumbar_Row_Machine_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Single_Arm_Iso_Lumbar_Row_Machine_set3_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 4
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Single_Arm_Iso_Lumbar_Row_Machine_set4_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Single_Arm_Iso_Lumbar_Row_Machine_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=bZgxJJEg5hY" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Seated Rear Delt Row Machine (3 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Rear_Delt_Row_Machine_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Rear_Delt_Row_Machine_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Rear_Delt_Row_Machine_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Seated_Rear_Delt_Row_Machine_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=nt6ZGcJzZDE" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Face-Away Cable Curl (3 sets of 12-15)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Face-Away_Cable_Curl_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Face-Away_Cable_Curl_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Face-Away_Cable_Curl_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Face-Away_Cable_Curl_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=TS4hKwLbm8g" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Dumbbell Preacher Curl (3 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dumbbell_Preacher_Curl_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dumbbell_Preacher_Curl_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dumbbell_Preacher_Curl_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Dumbbell_Preacher_Curl_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=soxrZlIl35U" target="_blank">How to do it</a>
+      </div>
+    </div>
+</div>
+<div class='tab-content' id='LEG' style='display:none;'>
+
+    <div class="exercise">
+      <h3>Hack Squat Machine (3 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Hack_Squat_Machine_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Hack_Squat_Machine_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Hack_Squat_Machine_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Hack_Squat_Machine_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=VWvA0yM84b4" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Leg Extension Machine (3 sets of 12-15)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Leg_Extension_Machine_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Leg_Extension_Machine_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Leg_Extension_Machine_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Leg_Extension_Machine_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 180)">Start 3 min Timer</button>
+        <span class="countdown">180</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=yRujuE-GIY4" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Seated Leg Curl Full Movement (3 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Leg_Curl_Full_Movement_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Leg_Curl_Full_Movement_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Leg_Curl_Full_Movement_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Seated_Leg_Curl_Full_Movement_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=OBHdC1JZBgg" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Seated Hip Abduction Machine (3 sets of 12-15)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Hip_Abduction_Machine_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Hip_Abduction_Machine_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Seated_Hip_Abduction_Machine_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Seated_Hip_Abduction_Machine_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=bo3jUxkGgIQ" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Horizontal Calf Raise (3 sets of 12-15)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Horizontal_Calf_Raise_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Horizontal_Calf_Raise_set2_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 3
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Horizontal_Calf_Raise_set3_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Horizontal_Calf_Raise_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=YMmgqO8Jo-k" target="_blank">How to do it</a>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <h3>Dead Bug (2 sets of 10-12)</h3>
+      <div class="sets">
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 1
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dead_Bug_set1_reps">
+        </label><br>
+        <label>
+          <input type="checkbox" onchange="saveData()"> Set 2
+          <input class="rep-input" type="number" placeholder="reps" oninput="saveData()"
+            id="Dead_Bug_set2_reps">
+        </label><br>
+      </div>
+      <div>Last weight used: <input type="text" id="Dead_Bug_weight" class="weight-input" oninput="saveData()" placeholder="kg"></div>
+      <div class="timer">
+        <button onclick="startTimer(this, 120)">Start 2 min Timer</button>
+        <span class="countdown">120</span> sec
+      </div>
+      <div style="margin-top: 10px;">
+        <a href="https://www.youtube.com/watch?v=4dIz6Ml0hmo" target="_blank">How to do it</a>
+      </div>
+    </div>
+</div>
+
+<audio id="beep" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function startTimer(button, duration) {
+    let countdownEl = button.nextElementSibling;
+    let timeLeft = duration;
+    button.disabled = true;
+    countdownEl.textContent = timeLeft;
+
+    let interval = setInterval(() => {
+      timeLeft--;
+      countdownEl.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        button.disabled = false;
+        countdownEl.textContent = duration;
+        document.getElementById("beep").play();
+        alert("Time's up!");
+      }
+    }, 1000);
+  }
+
+  function saveData() {
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach(input => {
+      localStorage.setItem(input.id, input.type === "checkbox" ? input.checked : input.value);
+    });
+  }
+
+  function loadData() {
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach(input => {
+      const val = localStorage.getItem(input.id);
+      if (val !== null) {
+        if (input.type === "checkbox") {
+          input.checked = (val === "true");
+        } else {
+          input.value = val;
+        }
+      }
+    });
+  }
+
+  window.onload = loadData;
+</script>
+</body>
+</html>
